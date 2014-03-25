@@ -1442,7 +1442,10 @@ class sparsetable {
   }
 
   typedef sparsegroup<value_type, GROUP_SIZE, allocator_type> group_type;
-  typedef std::vector<group_type, vector_alloc > group_vector_type;
+  
+  typedef typename Alloc::template rebind<group_type>::other group_alloc_type;
+  
+  typedef std::vector<group_type, group_alloc_type > group_vector_type;
 
   typedef typename group_vector_type::reference GroupsReference;
   typedef typename group_vector_type::const_reference GroupsConstReference;

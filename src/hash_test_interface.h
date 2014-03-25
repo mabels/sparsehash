@@ -83,8 +83,7 @@ class BaseHashtableInterface {
   class iterator : public HT::iterator {
    public:
     iterator() : parent_(NULL) { }   // this allows code like "iterator it;"
-    iterator(typename HT::iterator it,
-             const BaseHashtableInterface* parent)
+    iterator(typename HT::iterator it, const BaseHashtableInterface* parent)
         : HT::iterator(it), parent_(parent) { }
     key_type key() { return parent_->it_to_key(*this); }
    private:
@@ -433,7 +432,7 @@ class HashtableInterface_SparseHashMap
   bool supports_num_table_copies() const { return false; }
   bool supports_serialization() const { return true; }
 
-  void set_empty_key(const typename p::key_type& k) { }
+  void set_empty_key(const typename p::key_type&) { }
   void clear_empty_key() { }
   typename p::key_type empty_key() const { return typename p::key_type(); }
 
@@ -540,7 +539,7 @@ class HashtableInterface_SparseHashSet
   bool supports_num_table_copies() const { return false; }
   bool supports_serialization() const { return true; }
 
-  void set_empty_key(const typename p::key_type& k) { }
+  void set_empty_key(const typename p::key_type&) { }
   void clear_empty_key() { }
   typename p::key_type empty_key() const { return typename p::key_type(); }
 
@@ -656,7 +655,7 @@ class HashtableInterface_SparseHashtable
   bool supports_num_table_copies() const { return true; }
   bool supports_serialization() const { return true; }
 
-  void set_empty_key(const typename p::key_type& k) { }
+  void set_empty_key(const typename p::key_type&) { }
   void clear_empty_key() { }
   typename p::key_type empty_key() const { return typename p::key_type(); }
 
